@@ -1,0 +1,16 @@
+<section class="orbit-area" #orbitArea>
+
+    <!-- Círculo central -->
+    <div class="circle center" #centerCircle>
+        <div class="inner">HS</div>
+        <div class="dotted-ring"></div>
+    </div>
+
+    <!-- Nodos -->
+    <div *ngFor="let item of nodes" class="circle node" [style.left.%]="item.x" [style.top.%]="item.y"
+        [attr.data-id]="item.id" (mouseenter)="onHover(item.id)" (mouseleave)="onLeave()">
+        <div class="inner">{{item.label}}</div>
+        <div class="hover-ring"></div>
+    </div>
+
+</section>

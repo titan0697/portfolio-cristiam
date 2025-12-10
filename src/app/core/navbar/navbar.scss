@@ -1,0 +1,32 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: #cfeefb;
+
+    .logo {
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1rem;
+
+        li {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                color: inherit;
+                padding: .4rem .8rem;
+                border-radius: 8px;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.03);
+                }
+            }
+        }
+    }
+}

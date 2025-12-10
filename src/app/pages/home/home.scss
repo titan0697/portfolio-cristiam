@@ -1,0 +1,112 @@
+/* Contenedor principal */
+.orbit-area {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Círculos base */
+.circle {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: #151515;
+    border-radius: 50%;
+    border: 2px solid #ffffff15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+}
+.circle.node .hover-ring {
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.circle.node.active-node .hover-ring {
+  opacity: 1;
+  animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1); opacity: .7; }
+}
+
+/* Círculo central */
+.center {
+    width: 160px;
+    height: 160px;
+    z-index: 2;
+}
+
+/* Texto interior */
+.inner {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 3;
+}
+
+/* Aro punteado girando */
+.dotted-ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px dashed #ffffff30;
+    animation: spin 12s linear infinite;
+    top: -20px;
+    left: -20px;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Nodo (los círculos de afuera) */
+.node {
+    transition: 0.25s ease-in-out;
+}
+
+/* Aro externo que aparece en hover */
+.hover-ring {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px dotted transparent;
+    transition: 0.25s ease-in-out;
+    animation: spin 6s linear infinite;
+    opacity: 0;
+}
+
+/* Hover del nodo */
+.node:hover {
+    background: #ff9a33;
+    border-color: #ff9a33;
+    transform: scale(1.1);
+}
+
+.node:hover .hover-ring {
+    border-color: #ff9a33;
+    opacity: 1;
+}
+
+/* Para que las líneas no queden tapadas */
+.node,
+.center {
+    z-index: 5;
+}
