@@ -2,14 +2,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    color: #cfeefb;
+    padding: 1rem;
+    z-index: 30;
+    background: linear-gradient(90deg, #0D0F1A, #1A1F2E 40%, #262C3E);
+    color: #D6E4F5;
+    position: relative;
 
     .logo {
         font-weight: 700;
         letter-spacing: 1px;
+        font-size: 24px;
     }
 
+    /* -------- DESKTOP -------- */
     .nav-links {
         display: flex;
         gap: 1rem;
@@ -22,11 +27,76 @@
                 color: inherit;
                 padding: .4rem .8rem;
                 border-radius: 8px;
+                transition: 0.2s ease;
 
                 &:hover {
-                    background: rgba(255, 255, 255, 0.03);
+                    background: rgba(255, 255, 255, 0.06);
                 }
             }
+        }
+    }
+
+    /* -------- HAMBURGER BUTTON -------- */
+    .menu-btn {
+        width: 28px;
+        height: 22px;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+
+        span {
+            display: block;
+            height: 3px;
+            background: #D6E4F5;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+    }
+}
+
+/* -------- MOBILE -------- */
+@media (max-width: 768px) {
+    .nav {
+        padding: 1rem 1.5rem;
+
+        .menu-btn {
+            display: flex;
+        }
+
+        /* OCULTO POR DEFECTO EN MOBILE */
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #0D0F1A;
+            width: 100%;
+            flex-direction: column;
+            padding: 1rem 0;
+            gap: 0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: 0;
+
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+
+            li {
+                padding: .8rem 2rem;
+
+                a {
+                    display: block;
+                    padding: .8rem 0;
+                }
+            }
+        }
+
+        .nav-links.open {
+            display: flex;
+            max-height: 300px;
+            z-index: 20;
         }
     }
 }

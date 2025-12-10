@@ -19,23 +19,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.25s ease-in-out;
+    transition: background 0.25s ease-in-out,
+                border-color 0.25s ease-in-out,
+                transform 0.25s ease-in-out;
     cursor: pointer;
 }
+
+.circle.node {
+  transform: none !important;
+}
+
+
 .circle.node .hover-ring {
-  opacity: 0;
-  transition: 0.3s ease;
+    opacity: 0;
+    transition: 0.3s ease;
 }
 
 .circle.node.active-node .hover-ring {
-  opacity: 1;
-  animation: pulse 1s infinite ease-in-out;
+    opacity: 1;
+    animation: pulse 1s infinite ease-in-out;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: .7; }
-  50% { transform: scale(1.18); opacity: 1; }
-  100% { transform: scale(1); opacity: .7; }
+    0% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.18);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
 }
 
 /* Círculo central */
@@ -59,8 +78,6 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 3px dashed #ffffff30;
-    animation: spin 12s linear infinite;
     top: -20px;
     left: -20px;
     pointer-events: none;
@@ -95,13 +112,14 @@
 
 /* Hover del nodo */
 .node:hover {
-    background: #ff9a33;
-    border-color: #ff9a33;
-    transform: scale(1.1);
+    background: #352457;
+    border-color: #352457;
+    transform: scale(1.02);
 }
 
+
 .node:hover .hover-ring {
-    border-color: #ff9a33;
+    border-color: #352457;
     opacity: 1;
 }
 

@@ -1,5 +1,17 @@
-<app-navbar></app-navbar>
+<app-particles-background></app-particles-background>
 
-<main class="app-content" style="background-color: #F5F7FA;">
-  <router-outlet></router-outlet>
-</main>
+<div class="app-wrapper">
+  <app-navbar></app-navbar>
+  <main class="app-content">
+    <section id="home">
+      <app-home></app-home>
+    </section>
+    <section id="projects" style="background:rgb(164, 180, 203);opacity: 0.5;">
+      <app-projects></app-projects>
+    </section>
+    <section id="contact" style="background:rgb(181, 169, 169);opacity: 0.5;">
+      <app-contact></app-contact>
+    </section>
+  </main>
+  <app-footer></app-footer>
+</div>

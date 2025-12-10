@@ -7,10 +7,19 @@
     </div>
 
     <!-- Nodos -->
-    <div *ngFor="let item of nodes" class="circle node" [style.left.%]="item.x" [style.top.%]="item.y"
-        [attr.data-id]="item.id" (mouseenter)="onHover(item.id)" (mouseleave)="onLeave()">
-        <div class="inner">{{item.label}}</div>
-        <div class="hover-ring"></div>
-    </div>
+   <div
+    *ngFor="let item of nodes"
+    class="circle node"
+    #nodeEl
+    [attr.data-id]="item.id"
+    [style.left.%]="item.x"
+    [style.top.%]="item.y"
+    (mouseenter)="onHover(item.id)"
+    (mouseleave)="onLeave()"
+>
+    <div class="inner">{{item.label}}</div>
+    <div class="hover-ring"></div>
+</div>
+
 
 </section>

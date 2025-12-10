@@ -1,0 +1,30 @@
+/* Contenedor global para centrar todo el contenido */
+.app-wrapper {
+  max-width: 1900px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #F5F7FA;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  z-index: 5;
+}
+
+.app-content section {
+  height: 100vh; /* altura exacta de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* Hace que el contenido crezca y empuje el footer hacia abajo */
+.app-content {
+  flex: 1;
+  position: relative; /* importante */
+}
+
+/* Asegúrate de que el footer esté posicionado */
+app-footer {
+  z-index: 3;
+}
