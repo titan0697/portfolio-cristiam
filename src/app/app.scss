@@ -19,9 +19,18 @@
 
 
 /* Hace que el contenido crezca y empuje el footer hacia abajo */
+/* En tu styles.scss global o el componente padre */
 .app-content {
-  flex: 1;
-  position: relative; /* importante */
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  width: 100%;
+  /* Quitamos el opacity y colores de prueba si ya vas a usar el diseño final */
+  min-height: 100vh;
+  display: block;
+  position: relative;
 }
 
 /* Asegúrate de que el footer esté posicionado */

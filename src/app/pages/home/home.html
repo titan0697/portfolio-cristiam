@@ -1,25 +1,18 @@
-<section class="orbit-area" #orbitArea>
-
-    <!-- Círculo central -->
-    <div class="circle center" #centerCircle>
-        <div class="inner">HS</div>
-        <div class="dotted-ring"></div>
+<section class="bento-container">
+    <div class="bento-item hero">
+        <div class="content">
+            <span class="initials">Cristiam Salazar Barquero</span>
+            <h1>Software Engineer</h1>
+            <!-- <p>Frontend Engineer & UI Designer</p> -->
+        </div>
+        <div class="blob-bg"></div>
     </div>
 
-    <!-- Nodos -->
-   <div
-    *ngFor="let item of nodes"
-    class="circle node"
-    #nodeEl
-    [attr.data-id]="item.id"
-    [style.left.%]="item.x"
-    [style.top.%]="item.y"
-    (mouseenter)="onHover(item.id)"
-    (mouseleave)="onLeave()"
->
-    <div class="inner">{{item.label}}</div>
-    <div class="hover-ring"></div>
-</div>
-
-
+    <div *ngFor="let item of nodes" class="bento-item card" [ngClass]="item.id">
+        <div class="card-content">
+            <span class="label">{{item.label}}</span>
+            <div class="arrow">↗</div>
+        </div>
+        <div class="hover-overlay"></div>
+    </div>
 </section>

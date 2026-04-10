@@ -1,17 +1,21 @@
-<app-particles-background></app-particles-background>
-
 <div class="app-wrapper">
-  <app-navbar></app-navbar>
-  <main class="app-content">
+  <app-particles-background></app-particles-background>
+
+  <app-navbar style="position: relative; z-index: 10;"></app-navbar>
+
+  <main class="app-content" style="position: relative; z-index: 5;">
     <section id="home">
       <app-home></app-home>
     </section>
-    <section id="projects" style="background:rgb(164, 180, 203);opacity: 0.5;">
+
+    <section id="projects">
       <app-projects></app-projects>
     </section>
-    <section id="contact" style="background:rgb(181, 169, 169);opacity: 0.5;">
+
+    <section id="contact">
       <app-contact></app-contact>
     </section>
   </main>
-  <app-footer></app-footer>
+
+  <app-footer style="position: relative; z-index: 10;"></app-footer>
 </div>

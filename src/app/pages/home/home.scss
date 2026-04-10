@@ -1,130 +1,150 @@
-/* Contenedor principal */
-.orbit-area {
-    position: relative;
-    width: 100%;
+:host {
+    /* Paleta: Royal Obsidian & Rose */
+    --bg-deep: transparent;
+    --accent: rgba(53, 192, 150, 0.25);
+
+    /* El Color Mágico: Un tono uva/violáceo muy oscuro y traslúcido */
+    /* Este color neutraliza el verde del negro y resalta el rosa */
+    --glass-bg: rgba(53, 192, 150, 0.25);
+
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    /* Reflejo de luz con tinte lavanda para máxima elegancia */
+    --glass-reflection: rgba(200, 180, 255, 0.05);
+
+    --text-main: #ffffff;
+    --text-dim: black;
+
+    display: block;
+    background-color: var(--bg-deep);
+}
+
+.bento-container {
     height: 100vh;
+    padding: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    /* Aumentado para dejar respirar el diseño */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    align-items: stretch;
+    box-sizing: border-box;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+.bento-item {
+    position: relative;
+    background: var(--glass-bg);
+    /* Blur reducido de 20px a 12px para que las partículas se vean más nítidas */
+    backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Brillo superior tipo "seda" */
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg,
+                rgb(1, 65, 68) 0%,
+                transparent 50%);
+        pointer-events: none;
+    }
+
+    &.hero {
+        grid-column: span 2;
+        grid-row: span 2;
+        display: flex;
+        align-items: center;
+        padding: clamp(2rem, 5vw, 4rem);
+        /* Gradiente que se funde con las partículas del fondo */
+        background: radial-gradient(circle at 20% 20%,
+                var(--accent-glow) 0%,
+                rgba(10, 10, 14, 0.05) 100%);
+        border: 1px solid rgba(177, 122, 133, 0.15);
+    }
+
+    &.card {
+        padding: 2.5rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        &:hover {
+            transform: translateY(-8px) scale(1.01);
+            background: rgba(2, 52, 17, 0.08);
+            border-color: rgba(177, 122, 133, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+
+            .arrow {
+                background: var(--accent);
+                color: #000;
+                /* Contraste máximo para el rosa */
+                opacity: 1;
+                transform: rotate(45deg);
+                box-shadow: 0 0 20px var(--accent-glow);
+            }
+
+            .label {
+                color: black;
+                transform: translateX(5px);
+            }
+        }
+    }
+}
+
+.initials {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 200;
+    letter-spacing: -4px;
+    color: rgba(6, 108, 76, 0.5);
+    line-height: 1;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px var(--accent-glow));
+}
+
+.label {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+}
+
+.arrow {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text-main);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Círculos base */
-.circle {
+.blob-bg {
     position: absolute;
-    width: 110px;
-    height: 110px;
-    background: #151515;
-    border-radius: 50%;
-    border: 2px solid #ffffff15;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.25s ease-in-out,
-                border-color 0.25s ease-in-out,
-                transform 0.25s ease-in-out;
-    cursor: pointer;
-}
-
-.circle.node {
-  transform: none !important;
-}
-
-
-.circle.node .hover-ring {
-    opacity: 0;
-    transition: 0.3s ease;
-}
-
-.circle.node.active-node .hover-ring {
-    opacity: 1;
-    animation: pulse 1s infinite ease-in-out;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: .7;
-    }
-
-    50% {
-        transform: scale(1.18);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: .7;
-    }
-}
-
-/* Círculo central */
-.center {
-    width: 160px;
-    height: 160px;
-    z-index: 2;
-}
-
-/* Texto interior */
-.inner {
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    z-index: 3;
-}
-
-/* Aro punteado girando */
-.dotted-ring {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    top: -20px;
-    left: -20px;
+    top: -15%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.1;
+    z-index: 0;
     pointer-events: none;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Nodo (los círculos de afuera) */
-.node {
-    transition: 0.25s ease-in-out;
-}
-
-/* Aro externo que aparece en hover */
-.hover-ring {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 3px dotted transparent;
-    transition: 0.25s ease-in-out;
-    animation: spin 6s linear infinite;
-    opacity: 0;
-}
-
-/* Hover del nodo */
-.node:hover {
-    background: #352457;
-    border-color: #352457;
-    transform: scale(1.02);
-}
-
-
-.node:hover .hover-ring {
-    border-color: #352457;
-    opacity: 1;
-}
-
-/* Para que las líneas no queden tapadas */
-.node,
-.center {
-    z-index: 5;
 }
