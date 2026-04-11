@@ -11,7 +11,7 @@
 }
 
 .app-content section {
-  height: 100vh; /* altura exacta de la ventana */
+  min-height: 100vh; /* altura exacta de la ventana */
   display: flex;
   flex-direction: column;
   justify-content: center;

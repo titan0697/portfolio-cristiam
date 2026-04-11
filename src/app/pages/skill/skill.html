@@ -1,0 +1,19 @@
+<section class="skills-container">
+    <header class="skills-header">
+        <span class="section-label">Especialización</span>
+        <h2>Stack Tecnológico</h2>
+    </header>
+
+    <div class="skills-wrapper">
+        <div class="skill-category" *ngFor="let cat of skillCategories">
+            <h3>{{cat.name}}</h3>
+            <div class="tags-container">
+                <div class="skill-tag" *ngFor="let skill of cat.skills" [style.--glow-color]="cat.color">
+                    <span class="dot"></span>
+                    <span class="name">{{skill}}</span>
+                    <div class="tag-bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

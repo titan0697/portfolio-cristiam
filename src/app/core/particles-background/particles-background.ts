@@ -58,8 +58,9 @@ export class ParticlesBackground implements AfterViewInit {
     this.particles = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 3,
-      vy: (Math.random() - 0.5) * 3,
+      // Bajamos de 3 a 0.5 para un movimiento muy suave y premium
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
       size: 10 + Math.random() * 10,
       color: '#FFFFFF'
     }));
