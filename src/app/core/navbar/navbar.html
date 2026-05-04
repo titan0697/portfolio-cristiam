@@ -1,13 +1,17 @@
 <nav class="nav" style="max-width: 1900px;">
-  <div class="logo">Cristian Salazar Barquero</div>
+  <div class="logo">Cristiam Salazar Barquero</div>
 
-  <div class="menu-btn" id="menuBtn">
-    <span></span><span></span><span></span>
+  <div class="menu-actions">
+    <div class="menu-btn" id="menuBtn">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 
   <ul class="nav-links" id="navLinks">
-    <li><a href="#" data-target="home">Home</a></li>
-    <li><a href="#" data-target="projects">Projects</a></li>
-    <li><a href="#" data-target="contact">Contact</a></li>
+    <li><a href="#" data-target="home">{{ t('navHome') }}</a></li>
+    <li><a href="#" data-target="projects">{{ t('navProjects') }}</a></li>
+    <li><a href="#" data-target="about">{{ t('navAbout') }}</a></li>
+    <li><a href="#" data-target="skills">{{ t('navSkills') }}</a></li>
+    <li><a href="#" data-target="contact">{{ t('navContact') }}</a></li>
   </ul>
 </nav>

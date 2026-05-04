@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { language, t } from '../../i18n';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.scss'
 })
 export class Home {
-  nodes = [
-    { id: 'projects', label: 'Projects' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
-    { id: 'skills', label: 'Skills' }
-  ];
+  readonly language = language;
+  readonly t = t;
 }

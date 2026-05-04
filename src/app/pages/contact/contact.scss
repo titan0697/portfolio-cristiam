@@ -2,8 +2,8 @@
     --accent-emerald: rgba(53, 192, 150, 0.4);
     --glass-bg: rgba(18, 14, 25, 0.4);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --text-black: #000000
-    --text-dim: #a1a1aa;
+    --text-main: #e5edf7;
+    --text-dim: rgba(229, 237, 247, 0.8);
 
     display: block;
     padding: 6rem 2rem;
@@ -22,7 +22,7 @@
     }
 
     h2 {
-        color: var(--text-black);
+        color: var(--text-main);
         font-size: clamp(2rem, 4vw, 3rem);
         margin-top: 10px;
     }
@@ -79,7 +79,7 @@
 
         a,
         p {
-            color: var(--text-black);
+            color: var(--text-main);
             text-decoration: none;
             font-size: 1.1rem;
             margin: 0;
@@ -101,14 +101,14 @@
             border: 1px solid var(--glass-border);
             border-radius: 15px;
             padding: 1.2rem;
-            color: #fff;
+            color: #e5edf7;
+            background: rgba(255, 255, 255, 0.05);
             font-family: inherit;
             transition: all 0.3s ease;
 
             &:focus {
-               
                 border-color: var(--accent-emerald);
-                background: rgba(53, 192, 150, 0.05);
+                background: rgba(53, 192, 150, 0.08);
             }
         }
     }

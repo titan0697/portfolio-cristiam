@@ -1,18 +1,20 @@
-<section class="bento-container">
-    <div class="bento-item hero">
-        <div class="content">
-            <span class="initials">Cristiam Salazar Barquero</span>
-            <h1>Software Engineer</h1>
-            <!-- <p>Frontend Engineer & UI Designer</p> -->
+<section class="hero-section">
+    <div class="hero-content">
+        <span class="greeting">{{ t('homeGreeting') }}</span>
+        <h1 class="name">Cristiam Salazar Barquero</h1>
+        <h2 class="title">{{ t('homeTitle') }}</h2>
+        <p class="description">
+            {{ t('homeDescription') }}
+        </p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn primary">{{ t('homeViewWork') }}</a>
+            <a href="#contact" class="btn secondary">{{ t('homeGetInTouch') }}</a>
         </div>
-        <div class="blob-bg"></div>
     </div>
-
-    <div *ngFor="let item of nodes" class="bento-item card" [ngClass]="item.id">
-        <div class="card-content">
-            <span class="label">{{item.label}}</span>
-            <div class="arrow">↗</div>
+    <div class="hero-visual">
+        <div class="profile-image">
+            <img src="img/profile.jpeg" alt="Cristiam Salazar Barquero">
+            <div class="image-overlay"></div>
         </div>
-        <div class="hover-overlay"></div>
     </div>
 </section>

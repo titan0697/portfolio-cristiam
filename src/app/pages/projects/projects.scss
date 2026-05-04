@@ -1,214 +1,225 @@
 :host {
-    /* Reutilizamos tus variables de Esmeralda y Obsidiana */
     --accent-emerald: rgba(53, 192, 150, 0.4);
     --accent-glow: rgba(53, 192, 150, 0.15);
     --glass-bg: rgba(18, 14, 25, 0.3);
     --glass-border: rgba(255, 255, 255, 0.08);
-    --emerald-deep: rgb(1, 65, 68);
-    --text-black: #000000;
     --text-dim: #a1a1aa;
 
     display: block;
     padding: 4rem 2rem;
     min-height: 100vh;
-    /* Importante para el efecto 3D global */
-    perspective: 1500px;
 }
 
-.projects-header {
-    text-align: center;
-    margin-bottom: 6rem;
-
-    .section-label {
-        color: var(--accent-emerald);
-        text-transform: uppercase;
-        letter-spacing: 0.3em;
-        font-size: 2rem;
-        font-weight: 600;
-    }
-
-    h2 {
-        color: var(--text-white);
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        margin: 0.5rem 0;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-    }
-}
-
-.projects-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.project-card {
-    width: 100%;
-    height: 250px;
-    perspective: 1000px;
-    cursor: pointer;
+.projects-section {
     position: relative;
-    /* Forzamos que el estado final de la animación sea visible */
-    animation: entrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: calc(var(--index) * 0.15s);
 
-    /* Importante: evitar que las tarjetas se pisen entre sí */
-    z-index: calc(10 - var(--index));
-
-    &:hover {
-        height: 350px;
-        z-index: 20; // Sube la tarjeta al frente cuando haces hover
-
-        .card-inner {
-            transform: rotateX(-10deg) translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            border-color: var(--accent-emerald);
-        }
-
-        .card-front {
-            opacity: 0;
-            transform: translateY(-20px);
-            visibility: hidden; // Ayuda a que no bloquee clics
-        }
-
-        .card-back {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-    }
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: var(--glass-bg);
-    /* El mismo blur de tu Home */
-    backdrop-filter: blur(12px) saturate(140%);
-    border: 1px solid var(--glass-border);
-    border-radius: 30px;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow: hidden;
-
-    /* El brillo verde esmeralda superior que ya tenías */
     &::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg,
-                rgba(1, 65, 68, 0.8) 0%,
-                transparent 60%);
+        background: radial-gradient(circle at top right, rgba(53, 192, 150, 0.16), transparent 18%),
+            radial-gradient(circle at bottom left, rgba(53, 192, 150, 0.08), transparent 24%);
         pointer-events: none;
         z-index: 0;
     }
-}
 
-/* Cara Frontal: Imagen y Título */
-.card-front {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    z-index: 1;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.6;
-        transition: transform 0.8s ease;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
     }
 
-    .front-overlay {
-        position: absolute;
-        bottom: 2rem;
-        left: 3rem;
-        text-align: left;
+    .projects-header {
+        text-align: center;
+        margin-bottom: 4rem;
 
-        .project-number {
-            color: var(--accent-emerald);
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-        }
-
-        h3 {
-            color: var(--text-white);
-            font-size: clamp(1.8rem, 3vw, 2.8rem);
-            margin: 0;
+        .section-label {
+            color: rgba(53, 192, 150, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-size: 0.75rem;
             font-weight: 700;
         }
+
+        h2 {
+            color: #e5edf7;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: 1rem 0 0;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.02;
+        }
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2rem;
+    }
+
+    .project-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(12, 21, 34, 0.95) 0%, rgba(18, 26, 43, 0.92) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+        border-radius: 28px;
+        overflow: hidden;
+        transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: card-appear 0.8s ease forwards;
+
+        &:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: 0.18s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0.26s;
+        }
+
+        &:nth-child(4) {
+            animation-delay: 0.34s;
+        }
+
+        &:nth-child(5) {
+            animation-delay: 0.42s;
+        }
+
+        &:hover {
+            transform: translateY(-14px);
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.28);
+            border-color: rgba(53, 192, 150, 0.35);
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, rgba(53, 192, 150, 0.95), rgba(0, 0, 0, 0));
+        }
+
+        .card-image {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+            .image-overlay {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                background: rgba(53, 192, 150, 0.95);
+                color: #07111d;
+                padding: 0.65rem 0.8rem;
+                border-radius: 999px;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.45) 100%);
+                pointer-events: none;
+            }
+
+            &:hover img {
+                transform: scale(1.08);
+            }
+        }
+
+        .card-content {
+            padding: 2rem 1.8rem 2.2rem;
+
+            .year {
+                color: rgba(53, 192, 150, 1);
+                font-size: 0.82rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 0.75rem;
+                display: inline-block;
+                letter-spacing: 0.15em;
+            }
+
+            h3 {
+                color: #e5edf7;
+                font-size: 1.65rem;
+                margin-bottom: 1rem;
+                font-weight: 800;
+                line-height: 1.1;
+            }
+
+            p {
+                color: rgba(229, 237, 247, 0.78);
+                font-size: 0.95rem;
+                line-height: 1.8;
+                margin-bottom: 1.75rem;
+            }
+
+            .tech-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.6rem;
+                margin-bottom: 1.75rem;
+
+                .tag {
+                    background: rgba(53, 192, 150, 0.12);
+                    color: rgba(53, 192, 150, 1);
+                    padding: 0.45rem 0.95rem;
+                    border-radius: 999px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.06em;
+                }
+            }
+
+            .view-project-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.95rem 1.4rem;
+                border-radius: 999px;
+                background: linear-gradient(135deg, rgba(53, 192, 150, 1), rgba(71, 214, 169, 0.95));
+                color: #07111d;
+                text-decoration: none;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover {
+                    transform: translateX(6px);
+                    box-shadow: 0 12px 30px rgba(53, 192, 150, 0.25);
+                }
+            }
+        }
     }
 }
 
-/* Asegura que la cara trasera esté lista pero oculta */
-.card-back {
-    position: absolute;
-    inset: 0;
-    padding: 3rem;
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden; // Cambio aquí
-    transform: translateY(20px);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 2;
-    background: radial-gradient(circle at 10% 10%,
-            var(--accent-glow) 0%,
-            rgba(18, 14, 25, 0.4) 100%);
-}
-
-/* Tech Tags Refinados */
-.tech-tags {
-    display: flex;
-    gap: 0.8rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-
-    span {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--glass-border);
-        color: var(--text-dim);
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-}
-
-/* Botón de Acción */
-.view-project-btn {
-    display: inline-block;
-    background: var(--accent-emerald);
-    color: #000;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px var(--accent-glow);
-    }
-}
-
-/* Animación de entrada */
-@keyframes entrance {
+@keyframes card-appear {
     from {
         opacity: 0;
-        transform: translateY(50px) rotateX(10deg);
+        transform: translateY(40px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) rotateX(0deg);
+        transform: translateY(0);
     }
 }

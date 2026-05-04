@@ -1,7 +1,13 @@
 <div class="app-wrapper">
+  <!-- Particles background removed for a more modern, professional design -->
   <!-- <app-particles-background></app-particles-background> -->
-
   <app-navbar style="position: relative; z-index: 10;"></app-navbar>
+
+  <!-- Language toggle button in bottom-right corner -->
+  <button class="lang-toggle-float" type="button" (click)="changeLanguage()"
+    [title]="language() === 'es' ? '🌐 Cambiar a Inglés' : '🌐 Cambiar a Español'">
+    🌐 {{ language() === 'es' ? 'EN' : 'ES' }}
+  </button>
 
   <main class="app-content" style="position: relative; z-index: 5;">
     <section id="home">

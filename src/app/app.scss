@@ -3,31 +3,80 @@
   max-width: 1900px;
   margin: 0 auto;
   width: 100%;
-  background-color: #F5F7FA;
+  background: transparent;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
   z-index: 5;
 }
 
-.app-content section {
-  min-height: 100vh; /* altura exacta de la ventana */
+/* Language toggle button - floating in bottom-right corner */
+.lang-toggle-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e5edf7;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 
+.lang-toggle-float:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
 
-/* Hace que el contenido crezca y empuje el footer hacia abajo */
-/* En tu styles.scss global o el componente padre */
 .app-content {
   display: flex;
   flex-direction: column;
 }
 
+.app-content section {
+  min-height: 100vh;
+  /* altura exacta de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+  transition: background 0.4s ease;
+  color: #e5edf7;
+}
+
+.app-content section:nth-of-type(1) {
+  background: linear-gradient(180deg, rgba(8, 28, 52, 0.95), rgba(16, 44, 70, 0.9));
+}
+
+.app-content section:nth-of-type(2) {
+  background: linear-gradient(180deg, rgba(20, 52, 78, 0.94), rgba(28, 66, 94, 0.88));
+}
+
+.app-content section:nth-of-type(3) {
+  background: linear-gradient(180deg, rgba(30, 64, 92, 0.93), rgba(38, 76, 104, 0.87));
+}
+
+.app-content section:nth-of-type(4) {
+  background: linear-gradient(180deg, rgba(40, 78, 106, 0.92), rgba(28, 62, 86, 0.86));
+}
+
+.app-content section:nth-of-type(5) {
+  background: linear-gradient(180deg, rgba(16, 38, 58, 0.95), rgba(12, 30, 48, 0.9));
+}
+
 section {
   width: 100%;
-  /* Quitamos el opacity y colores de prueba si ya vas a usar el diseño final */
   min-height: 100vh;
   display: block;
   position: relative;

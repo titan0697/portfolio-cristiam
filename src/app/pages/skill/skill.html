@@ -1,17 +1,18 @@
-<section class="skills-container">
-    <header class="skills-header">
-        <span class="section-label">Especialización</span>
-        <h2>Stack Tecnológico</h2>
-    </header>
+<section class="skills-section">
+    <div class="container">
+        <header class="skills-header">
+            <span class="section-label">Especialización</span>
+            <h2>Stack Tecnológico</h2>
+        </header>
 
-    <div class="skills-wrapper">
-        <div class="skill-category" *ngFor="let cat of skillCategories">
-            <h3>{{cat.name}}</h3>
-            <div class="tags-container">
-                <div class="skill-tag" *ngFor="let skill of cat.skills" [style.--glow-color]="cat.color">
-                    <span class="dot"></span>
-                    <span class="name">{{skill}}</span>
-                    <div class="tag-bg"></div>
+        <div class="skills-grid">
+            <div class="skill-card" *ngFor="let skill of skills; let i = index" [style.--skill-color]="skill.color"
+                [style.animation-delay.ms]="i * 100">
+                <div class="skill-info">
+                    <div class="skill-header">
+                        <fa-icon [icon]="skill.icon" class="skill-icon"></fa-icon>
+                        <h3 class="skill-name">{{ skill.name }}</h3>
+                    </div>
                 </div>
             </div>
         </div>

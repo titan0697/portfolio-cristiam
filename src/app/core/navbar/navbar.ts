@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { language, t, toggleLanguage } from '../../i18n';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +8,9 @@ import { Component, AfterViewInit } from '@angular/core';
   styleUrls: ['./navbar.scss']
 })
 export class Navbar implements AfterViewInit {
+  readonly language = language;
+  readonly t = t;
+
   ngAfterViewInit() {
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -31,5 +35,9 @@ export class Navbar implements AfterViewInit {
         }
       });
     });
+  }
+
+  changeLanguage() {
+    toggleLanguage();
   }
 }
