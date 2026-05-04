@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Navbar } from './core/navbar/navbar';
 import { Footer } from './core/footer/footer';
-import { ParticlesBackground } from './core/particles-background/particles-background';
+// import { ParticlesBackground } from './core/particles-background/particles-background';
 import { Contact } from './pages/contact/contact';
 import { Projects } from './pages/projects/projects';
 import { Home } from './pages/home/home';
@@ -10,7 +10,7 @@ import { Skill } from './pages/skill/skill';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Footer, ParticlesBackground, Contact, Projects, Home, About, Skill],
+  imports: [Navbar, Footer, Contact, Projects, Home, About, Skill],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
